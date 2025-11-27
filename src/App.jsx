@@ -40,40 +40,62 @@ const utf8_to_b64 = (str) => window.btoa(unescape(encodeURIComponent(str)));
 const cleanId = (id) => (!id ? "" : id.toString().replace(/[^a-zA-Z0-9]/g, ""));
 const formatDate = () => new Date().toLocaleDateString('es-CO', { year: 'numeric', month: 'short', day: 'numeric' });
 
-// --- COMPONENTE VISUAL: ESTELA DEL MOUSE ---
+// --- COMPONENTE VISUAL: ESTELA DEL MOUSE (CANVAS OPTIMIZADO) ---
 const MouseTrail = () => {
-  const [trail, setTrail] = useState([]);
+  const canvasRef = useRef(null);
+  const pointsRef = useRef([]);
 
   useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let animationFrameId;
+
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
     const handleMouseMove = (e) => {
-      setTrail(prev => [
-        ...prev.slice(-15), // Mantener solo los últimos 15 puntos
-        { x: e.clientX, y: e.clientY, id: Date.now() }
-      ]);
+      pointsRef.current.push({ x: e.clientX, y: e.clientY, age: 0 });
     };
     window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const newPoints = [];
+
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+
+      for (let i = 0; i < pointsRef.current.length; i++) {
+        const point = pointsRef.current[i];
+        point.age += 1;
+        if (point.age > 25) continue; // Vida útil de la estela
+
+        const opacity = 1 - point.age / 25;
+        ctx.beginPath();
+        ctx.arc(point.x, point.y, (25 - point.age) * 0.3, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(34, 211, 238, ${opacity * 0.5})`; // Cyan-400
+        ctx.fill();
+
+        newPoints.push(point);
+      }
+      pointsRef.current = newPoints;
+      animationFrameId = requestAnimationFrame(animate);
+    };
+    animate();
+
+    return () => {
+      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('mousemove', handleMouseMove);
+      cancelAnimationFrame(animationFrameId);
+    };
   }, []);
 
-  return (
-    <div className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden hidden md:block">
-      {trail.map((point, index) => (
-        <div
-          key={point.id}
-          className="absolute rounded-full bg-cyan-400 blur-[1px]"
-          style={{
-            left: point.x,
-            top: point.y,
-            width: `${(index + 1) * 0.5}px`,
-            height: `${(index + 1) * 0.5}px`,
-            opacity: (index + 1) / 20,
-            transform: 'translate(-50%, -50%)',
-            transition: 'opacity 0.2s'
-          }}
-        />
-      ))}
-    </div>
-  );
+  return <canvas ref={canvasRef} className="pointer-events-none fixed inset-0 z-[9999] hidden md:block" />;
 };
 
 // --- SERVICIO GITHUB ---
@@ -133,7 +155,10 @@ export default function App() {
   const lastMessageRef = useRef("");
 
   const [formData, setFormData] = useState({ tipoDoc: 'T.I.', numeroDoc: '' });
-  const [studentResult, setStudentResult] = useState(null);
+  const [studentResult, setStudentResult] = useState(() => {
+    const saved = localStorage.getItem('sg_studentResult');
+    return saved ? JSON.parse(saved) : null;
+  });
   const [searchLoading, setSearchLoading] = useState(false);
   const [searchError, setSearchError] = useState('');
   const [showSubjectModal, setShowSubjectModal] = useState(false);
@@ -146,6 +171,7 @@ export default function App() {
   const [activeFeature, setActiveFeature] = useState(null);
   const [showCertificate, setShowCertificate] = useState(false);
   const [showPlanDetails, setShowPlanDetails] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Admin Filters
   const [filterPlan, setFilterPlan] = useState('Todos');
@@ -205,6 +231,14 @@ export default function App() {
     localStorage.setItem('sg_viewMode', viewMode);
     localStorage.setItem('sg_adminToken', adminToken);
   }, [viewMode, adminToken]);
+
+  useEffect(() => {
+    if (studentResult) {
+      localStorage.setItem('sg_studentResult', JSON.stringify(studentResult));
+    } else {
+      localStorage.removeItem('sg_studentResult');
+    }
+  }, [studentResult]);
 
   useEffect(() => {
     loadSystemData();
@@ -359,7 +393,7 @@ export default function App() {
 
   // 5. VISTAS (RENDERING)
   return (
-    <div className="min-h-screen w-full font-sans text-slate-200 bg-[#020617] relative flex flex-col items-center justify-center overflow-hidden">
+    <div className="min-h-screen w-full font-sans text-slate-200 bg-[#020617] relative flex flex-col items-center justify-center overflow-x-hidden">
 
       {/* BACKGROUND GLOBAL FIXED */}
       <div className="fixed inset-0 z-0">
@@ -390,17 +424,39 @@ export default function App() {
       {viewMode === 'admin' && (
         <div className="relative z-10 w-full h-screen flex flex-col bg-black/80 backdrop-blur-sm">
           <header className="bg-slate-900/90 border-b border-white/10 px-6 py-3 flex justify-between items-center sticky top-0 z-30 neon-border-bottom">
-            <div className="flex items-center gap-4"><img src={SYS_CONFIG.ASSETS.logoMain} className="h-8 w-auto" /><span className="font-mono text-white text-xs tracking-[0.2em] border-l border-white/20 pl-4 hidden md:block">SYSTEM v8.0</span></div>
+            <div className="flex items-center gap-4">
+              <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden text-white"><Settings size={24} /></button>
+              <img src={SYS_CONFIG.ASSETS.logoMain} className="h-8 w-auto" />
+              <span className="font-mono text-white text-xs tracking-[0.2em] border-l border-white/20 pl-4 hidden md:block">SYSTEM v8.0</span>
+            </div>
             <div className="flex items-center gap-3">
               {unsavedChanges && <span className="text-yellow-400 text-[10px] font-bold uppercase tracking-widest animate-pulse hidden md:block">⚠ Cambios pendientes</span>}
               <button onClick={saveAllChanges} disabled={!unsavedChanges || isSaving} className={`px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-2 transition-all border ${unsavedChanges ? 'bg-white text-black hover:bg-slate-200' : 'border-slate-700 text-slate-500'}`}>{isSaving ? <Loader2 className="animate-spin" size={14} /> : <Save size={14} />} <span className="hidden md:inline">{isSaving ? 'SYNCING...' : 'GUARDAR'}</span></button>
               <button onClick={() => { setViewMode('student'); setAdminToken(''); }} className="bg-slate-800 hover:bg-red-900/50 border border-slate-700 text-slate-400 hover:text-red-200 px-3 py-2 rounded-lg transition-all"><LogOut size={16} /></button>
             </div>
           </header>
-          <div className="flex flex-grow overflow-hidden">
-            <aside className={`bg-slate-950/80 border-r border-white/10 flex-col transition-all duration-300 hidden md:flex ${sidebarCollapsed ? 'w-20 items-center py-6' : 'w-64 p-4'}`}>
-              <button onClick={() => setSidebarCollapsed(!sidebarCollapsed)} className="mb-8 text-slate-500 hover:text-white self-end mr-2">{sidebarCollapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}</button>
-              <nav className="space-y-2 w-full">{[{ id: 'dashboard', icon: LayoutDashboard, label: 'Métricas' }, { id: 'students', icon: Users, label: 'Estudiantes' }, { id: 'config', icon: Settings, label: 'Configuración' }].map((item) => (<button key={item.id} onClick={() => setActiveTab(item.id)} className={`w-full p-3 rounded-xl text-left text-xs font-bold flex items-center gap-4 transition-all ${activeTab === item.id ? 'bg-white/10 text-white border border-white/30 shadow-[0_0_10px_rgba(255,255,255,0.1)]' : 'text-slate-500 hover:text-white'}`}><item.icon size={20} className="min-w-[20px]" />{!sidebarCollapsed && <span>{item.label}</span>}</button>))}</nav>
+          <div className="flex flex-grow overflow-hidden relative">
+            {/* Mobile Overlay */}
+            {mobileMenuOpen && <div className="fixed inset-0 bg-black/80 z-40 md:hidden" onClick={() => setMobileMenuOpen(false)}></div>}
+
+            <aside className={`bg-slate-950/90 border-r border-white/10 flex-col transition-all duration-300 
+              fixed inset-y-0 left-0 z-50 w-64 p-4 md:relative md:flex
+              ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
+              ${sidebarCollapsed ? 'md:w-20 md:items-center md:py-6' : 'md:w-64 md:p-4'}
+            `}>
+              <div className="flex justify-between items-center mb-8">
+                <span className="text-xs font-bold text-slate-500 md:hidden">MENU</span>
+                <button onClick={() => setSidebarCollapsed(!sidebarCollapsed)} className="text-slate-500 hover:text-white hidden md:block">{sidebarCollapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}</button>
+                <button onClick={() => setMobileMenuOpen(false)} className="text-slate-500 hover:text-white md:hidden"><X size={20} /></button>
+              </div>
+              <nav className="space-y-2 w-full">
+                {[{ id: 'dashboard', icon: LayoutDashboard, label: 'Métricas' }, { id: 'students', icon: Users, label: 'Estudiantes' }, { id: 'config', icon: Settings, label: 'Configuración' }].map((item) => (
+                  <button key={item.id} onClick={() => { setActiveTab(item.id); setMobileMenuOpen(false); }} className={`w-full p-3 rounded-xl text-left text-xs font-bold flex items-center gap-4 transition-all ${activeTab === item.id ? 'bg-white/10 text-white border border-white/30 shadow-[0_0_10px_rgba(255,255,255,0.1)]' : 'text-slate-500 hover:text-white'}`}>
+                    <item.icon size={20} className="min-w-[20px]" />
+                    <span className={`${sidebarCollapsed ? 'md:hidden' : 'block'}`}>{item.label}</span>
+                  </button>
+                ))}
+              </nav>
             </aside>
             <main className="flex-grow p-6 overflow-y-auto custom-scrollbar">
               {activeTab === 'dashboard' && (
@@ -545,7 +601,7 @@ export default function App() {
                 <div className="absolute inset-0 rounded-full border-2 border-white/30 border-t-transparent animate-spin-slow" style={{ animationDuration: '3s' }}></div>
                 <div className="absolute -inset-2 rounded-full border border-cyan-500/20 border-b-transparent animate-spin-slow" style={{ animationDuration: '7s', animationDirection: 'reverse' }}></div>
               </div>
-              <h2 className="text-3xl font-black text-white mb-2 tracking-wide uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">{studentResult.nombre}</h2>
+              <h2 className="text-3xl font-black text-white mb-2 tracking-wide uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] break-words">{studentResult.nombre}</h2>
               <div className="w-full border-t border-white/10 my-6"></div>
               <div className="grid grid-cols-1 gap-4 w-full">
                 <div className="bg-white/5 px-4 py-3 rounded-xl border border-white/10 hover:border-white/30 transition-all">
@@ -573,7 +629,7 @@ export default function App() {
                 <a href={studentResult.url_carpeta} target="_blank" className="col-span-2 md:col-span-2 flex items-center gap-6 p-6 bg-black/30 rounded-2xl border border-white/10 hover:border-cyan-400/50 hover:bg-cyan-900/20 shadow-lg hover:shadow-[0_0_20px_rgba(34,211,238,0.2)] transition-all group relative overflow-hidden h-32">
                   <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   <div className="p-4 bg-slate-800 rounded-2xl text-cyan-400 group-hover:scale-110 transition-transform shadow-inner relative z-10"><FolderOpen size={28} /></div>
-                  <div className="relative z-10"><h4 className="font-bold text-white text-lg group-hover:text-cyan-300 transition-colors">Repositorio</h4><p className="text-xs text-slate-400 mt-1">Material de estudio</p></div>
+                  <div className="relative z-10"><h4 className="font-bold text-white text-lg group-hover:text-cyan-300 transition-colors break-words">Repositorio</h4><p className="text-xs text-slate-400 mt-1 break-words">Material de estudio</p></div>
                   <ExternalLink size={20} className="ml-auto text-slate-600 group-hover:text-cyan-400 relative z-10" />
                 </a>
 
@@ -581,7 +637,7 @@ export default function App() {
                 <button onClick={() => setShowSubjectModal(true)} className="col-span-2 md:col-span-2 flex items-center gap-6 p-6 bg-black/30 rounded-2xl border border-white/10 hover:border-purple-400/50 hover:bg-purple-900/20 shadow-lg hover:shadow-[0_0_20px_rgba(192,132,252,0.2)] transition-all group text-left w-full relative overflow-hidden h-32">
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   <div className="p-4 bg-slate-800 rounded-2xl text-purple-400 group-hover:scale-110 transition-transform shadow-inner relative z-10"><FileSignature size={28} /></div>
-                  <div className="relative z-10"><h4 className="font-bold text-white text-lg group-hover:text-purple-300 transition-colors">Evaluaciones</h4><p className="text-xs text-slate-400 mt-1">Simulacros online</p></div>
+                  <div className="relative z-10"><h4 className="font-bold text-white text-lg group-hover:text-purple-300 transition-colors break-words">Evaluaciones</h4><p className="text-xs text-slate-400 mt-1 break-words">Simulacros online</p></div>
                   <ChevronRight size={20} className="ml-auto text-slate-600 group-hover:text-purple-400 relative z-10" />
                 </button>
 
