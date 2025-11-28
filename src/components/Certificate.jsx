@@ -123,7 +123,7 @@ const Certificate = ({ student, onClose }) => {
                     className="bg-white relative flex flex-row overflow-hidden shrink-0 rounded-sm"
                 >
                     {/* LEFT SIDEBAR - MASCOT */}
-                    <div className="w-[35%] bg-[#0070f3] relative flex items-center justify-center overflow-hidden h-full">
+                    <div className="w-[25%] bg-[#0070f3] relative flex items-center justify-center overflow-hidden h-full">
                         <div
                             className="absolute inset-0 opacity-10 bg-repeat"
                             style={{ backgroundImage: `url(${cubesImg})` }}
@@ -141,12 +141,12 @@ const Certificate = ({ student, onClose }) => {
                         <img
                             src={mascotaImg}
                             alt="Mascota"
-                            className="relative z-10 h-[98%] w-full object-contain drop-shadow-2xl"
+                            className="relative z-10 h-[94.5%] w-[94%] object-contain drop-shadow-2xl"
                         />
                     </div>
 
                     {/* RIGHT CONTENT */}
-                    <div className="w-[65%] p-12 flex flex-col items-center text-center bg-white relative h-full justify-between">
+                    <div className="w-[75%] p-12 flex flex-col items-center text-center bg-white relative h-full justify-between">
                         {/* Watermark Logo (Background) */}
                         <div className="absolute inset-0 flex items-center justify-center opacity-[0.02] pointer-events-none">
                             <img src={servicesLogoImg} className="w-[80%] grayscale" alt="" />
@@ -156,7 +156,7 @@ const Certificate = ({ student, onClose }) => {
                             {/* Top Header */}
                             <div className="mt-8 mb-2">
                                 <h3 className="text-sm font-bold text-slate-900 tracking-[0.5em] uppercase mb-4">SEAMOSGENIOS</h3>
-                                <h1 className="text-6xl font-black text-slate-900 leading-none uppercase tracking-wide mb-2">
+                                <h1 className="text-6xl font-black text-[#002060] leading-none uppercase tracking-wide mb-2">
                                     CERTIFICADO
                                 </h1>
                                 <h2 className="text-3xl font-bold text-[#0070f3] uppercase tracking-wider">
@@ -165,15 +165,15 @@ const Certificate = ({ student, onClose }) => {
                             </div>
 
                             {/* Main Body */}
-                            <div className="flex-grow flex flex-col justify-center w-full max-w-3xl">
+                            <div className="flex-grow flex flex-col justify-center w-full max-w-3xl items-center">
                                 <p className="text-slate-500 font-serif italic text-xl mb-6">Este documento certifica que</p>
 
-                                <h2 className="text-5xl font-black text-slate-800 uppercase mb-6 break-words leading-tight">
+                                <h2 className="text-5xl font-black text-[#002060] uppercase mb-6 break-words leading-tight">
                                     {student.nombre}
                                 </h2>
 
-                                {/* Blue Separator Line */}
-                                <div className="w-full h-1 bg-[#0070f3] mb-8"></div>
+                                {/* Blue Separator Line - 40% Width */}
+                                <div className="w-[40%] h-1 bg-[#0070f3] mb-8"></div>
 
                                 <p className="text-slate-600 text-lg leading-relaxed font-medium px-8">
                                     Ha participado satisfactoriamente en el <strong className="text-[#0070f3]">MINI SIMULACRO ICFES 2026-1</strong>,
@@ -182,10 +182,9 @@ const Certificate = ({ student, onClose }) => {
 
                                 {/* Score Box */}
                                 <div className="mt-10 mx-auto p-4 bg-slate-50 rounded-2xl border border-slate-100 w-full max-w-md flex items-center justify-center gap-6">
-                                    {/* Logo in Score Box */}
+                                    {/* Logo in Score Box - INVERTED TO BLACK */}
                                     <div className="flex flex-col items-center justify-center">
-                                        <img src={servicesLogoImg} className="h-12 w-auto grayscale opacity-80 mb-1" alt="Logo" />
-                                        <span className="text-[8px] font-bold uppercase tracking-widest text-slate-900">SEAMOSGENIOS</span>
+                                        <img src={servicesLogoImg} className="h-12 w-auto brightness-0" alt="Logo" />
                                     </div>
 
                                     {/* Divider */}
@@ -194,7 +193,7 @@ const Certificate = ({ student, onClose }) => {
                                     {/* Score Text */}
                                     <div className="text-left">
                                         <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-1">PUNTAJE GLOBAL</p>
-                                        <div className="text-3xl font-mono font-bold text-slate-300 flex items-center gap-2">
+                                        <div className="text-3xl font-mono font-bold text-slate-400 flex items-center gap-2">
                                             <span>---</span> <span className="text-lg text-slate-400">/ 500</span>
                                         </div>
                                     </div>
@@ -205,7 +204,7 @@ const Certificate = ({ student, onClose }) => {
                             <div className="w-full flex flex-row justify-between items-end mt-auto pt-8 border-t border-slate-100/50">
                                 <div className="text-left">
                                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">FECHA DE EMISIÓN</p>
-                                    <p className="text-lg font-bold text-slate-800">{new Date().toLocaleDateString('es-CO', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                                    <p className="text-lg font-bold text-slate-800 uppercase">27 de noviembre de 2025</p>
                                 </div>
 
                                 <div className="flex flex-col items-center">
