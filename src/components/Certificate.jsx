@@ -123,7 +123,7 @@ const Certificate = ({ student, onClose }) => {
                     className="bg-white relative flex flex-row overflow-hidden shrink-0 rounded-sm"
                 >
                     {/* LEFT SIDEBAR - MASCOT */}
-                    <div className="w-[35%] bg-[#0070f3] relative flex items-end justify-center overflow-hidden h-full">
+                    <div className="w-[35%] bg-[#0070f3] relative flex items-center justify-center overflow-hidden h-full">
                         <div
                             className="absolute inset-0 opacity-10 bg-repeat"
                             style={{ backgroundImage: `url(${cubesImg})` }}
@@ -141,51 +141,70 @@ const Certificate = ({ student, onClose }) => {
                         <img
                             src={mascotaImg}
                             alt="Mascota"
-                            className="relative z-10 w-[90%] max-w-none mb-0 object-contain drop-shadow-2xl"
+                            className="relative z-10 h-[98%] w-full object-contain drop-shadow-2xl"
                         />
                     </div>
 
                     {/* RIGHT CONTENT */}
-                    <div className="w-[65%] p-16 flex flex-col items-center text-center bg-white relative h-full justify-between">
-                        {/* Watermark Logo */}
-                        <div className="absolute inset-0 flex items-center justify-center opacity-[0.05] pointer-events-none">
-                            <img src={servicesLogoImg} className="w-[70%] grayscale" alt="" />
+                    <div className="w-[65%] p-12 flex flex-col items-center text-center bg-white relative h-full justify-between">
+                        {/* Watermark Logo (Background) */}
+                        <div className="absolute inset-0 flex items-center justify-center opacity-[0.02] pointer-events-none">
+                            <img src={servicesLogoImg} className="w-[80%] grayscale" alt="" />
                         </div>
 
-                        <div className="relative z-10 w-full flex flex-col h-full">
-                            {/* Header */}
-                            <div className="mb-6">
-                                <h3 className="text-xl font-bold text-slate-900 tracking-[0.3em] uppercase mb-2">SeamosGenios</h3>
-                                <h1 className="text-5xl font-black text-slate-900 leading-tight uppercase tracking-wide">
-                                    Certificado
-                                    <span className="block text-3xl font-bold text-[#0070f3] mt-1">de Participación</span>
+                        <div className="relative z-10 w-full flex flex-col h-full items-center">
+                            {/* Top Header */}
+                            <div className="mt-8 mb-2">
+                                <h3 className="text-sm font-bold text-slate-900 tracking-[0.5em] uppercase mb-4">SEAMOSGENIOS</h3>
+                                <h1 className="text-6xl font-black text-slate-900 leading-none uppercase tracking-wide mb-2">
+                                    CERTIFICADO
                                 </h1>
+                                <h2 className="text-3xl font-bold text-[#0070f3] uppercase tracking-wider">
+                                    DE PARTICIPACIÓN
+                                </h2>
                             </div>
 
-                            {/* Body */}
-                            <div className="flex-grow flex flex-col justify-center mb-6">
-                                <p className="text-slate-500 font-serif italic text-lg mb-4">Este documento certifica que</p>
-                                <h2 className="text-4xl font-black text-slate-800 uppercase border-b-4 border-[#0070f3] pb-4 mb-6 inline-block mx-auto min-w-[60%] break-words">
+                            {/* Main Body */}
+                            <div className="flex-grow flex flex-col justify-center w-full max-w-3xl">
+                                <p className="text-slate-500 font-serif italic text-xl mb-6">Este documento certifica que</p>
+
+                                <h2 className="text-5xl font-black text-slate-800 uppercase mb-6 break-words leading-tight">
                                     {student.nombre}
                                 </h2>
-                                <p className="text-slate-600 text-lg leading-relaxed max-w-2xl mx-auto font-medium">
+
+                                {/* Blue Separator Line */}
+                                <div className="w-full h-1 bg-[#0070f3] mb-8"></div>
+
+                                <p className="text-slate-600 text-lg leading-relaxed font-medium px-8">
                                     Ha participado satisfactoriamente en el <strong className="text-[#0070f3]">MINI SIMULACRO ICFES 2026-1</strong>,
                                     demostrando compromiso y excelencia académica.
                                 </p>
 
                                 {/* Score Box */}
-                                <div className="mt-8 p-4 bg-slate-50 rounded-xl border border-slate-200 w-full max-w-xs mx-auto">
-                                    <p className="text-xs text-slate-400 font-bold uppercase tracking-widest mb-1">Puntaje Global</p>
-                                    <div className="text-3xl font-mono font-bold text-slate-300 flex items-center justify-center gap-2">
-                                        <span>---</span> <span className="text-lg text-slate-400">/ 500</span>
+                                <div className="mt-10 mx-auto p-4 bg-slate-50 rounded-2xl border border-slate-100 w-full max-w-md flex items-center justify-center gap-6">
+                                    {/* Logo in Score Box */}
+                                    <div className="flex flex-col items-center justify-center">
+                                        <img src={servicesLogoImg} className="h-12 w-auto grayscale opacity-80 mb-1" alt="Logo" />
+                                        <span className="text-[8px] font-bold uppercase tracking-widest text-slate-900">SEAMOSGENIOS</span>
+                                    </div>
+
+                                    {/* Divider */}
+                                    <div className="w-px h-12 bg-slate-300"></div>
+
+                                    {/* Score Text */}
+                                    <div className="text-left">
+                                        <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-1">PUNTAJE GLOBAL</p>
+                                        <div className="text-3xl font-mono font-bold text-slate-300 flex items-center gap-2">
+                                            <span>---</span> <span className="text-lg text-slate-400">/ 500</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             {/* Footer */}
-                            <div className="flex flex-row justify-between items-end gap-8 mt-auto pt-8 border-t border-slate-100">
+                            <div className="w-full flex flex-row justify-between items-end mt-auto pt-8 border-t border-slate-100/50">
                                 <div className="text-left">
-                                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Fecha de Emisión</p>
+                                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">FECHA DE EMISIÓN</p>
                                     <p className="text-lg font-bold text-slate-800">{new Date().toLocaleDateString('es-CO', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
                                 </div>
 
@@ -193,11 +212,11 @@ const Certificate = ({ student, onClose }) => {
                                     <img
                                         src={firmaImg}
                                         alt="Firma"
-                                        className="h-16 w-auto mb-2 filter contrast-125"
+                                        className="h-20 w-auto mb-[-10px] z-10 filter contrast-125"
                                     />
-                                    <div className="w-48 h-0.5 bg-slate-900 mb-2"></div>
-                                    <p className="text-xs font-black text-slate-900 uppercase tracking-wider">Daniel De La Cruz</p>
-                                    <p className="text-[10px] font-bold text-[#0070f3] uppercase">Director General</p>
+                                    <div className="w-48 h-0.5 bg-slate-900 mb-2 relative z-0"></div>
+                                    <p className="text-xs font-black text-slate-900 uppercase tracking-wider">DANIEL DE LA CRUZ</p>
+                                    <p className="text-[10px] font-bold text-[#0070f3] uppercase">DIRECTOR GENERAL</p>
                                 </div>
                             </div>
                         </div>
