@@ -429,4 +429,45 @@
         "fechaPago": "21/11/2025",
         "url_carpeta": "https://drive.google.com/drive/folders/1pd2ppTqzChMb9niKHfyxIrSCxPvP2y6V"
     }
+        {
+        "nombre": "DANIEL EDUARDO DE LA CRUZ VEGA",
+        "tipoDoc": "CC",
+        "id": "104567102",
+        "email": "isasdaniel64@gmail.com",
+        "plan": "Plan Premium",
+        "estado": "Activo",
+        "fechaPago": "21/11/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/1X-Sk_eM272it9IlXQncDPUnwAsLTQlNB"
+    },
+    {
+        "nombre": "MARIA JOSE GUTIERREZ OSORIO",
+        "tipoDoc": "CC",
+        "id": "1114241878",
+        "email": "mari.302jose@gmail.com",
+        "plan": "Plan Premium",
+        "estado": "Activo",
+        "fechaPago": "22/11/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/1lCxI4jXxjMVtdGsv94N_NvqxuGfMP1MD"
+    },
+    {
+        "nombre": "LUIS FERNANDO HURTADO ARDILA",
+        "tipoDoc": "CC",
+        "id": "1005650933",
+        "email": "luisfercho130@gmail.com",
+        "plan": "Plan Premium",
+        "estado": "Activo",
+        "fechaPago": "25/11/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/1LqZB7DDhwKKr1xL-T5x4UqH1dI9csDBK"
+    },
+    {
+        "nombre": "MARIA JOSE MENDEZ BERRIO",
+        "tipoDoc": "T.I.",
+        "id": "1067925321",
+        "email": "majumendez11@gmail.com",
+        "plan": "Plan Intermedio",
+        "estado": "Activo",
+        "fechaPago": "25/11/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/1vDe_l_SehtEw_Kr2OaZZaxzRmewX25fG"
+    }
+
 ]
