@@ -6,5 +6,6 @@
         "naturales": "#",
         "ingles": "#"
     },
-    "systemMessage": "Bienvenido a la plataforma de evaluación."
+    "systemMessage": "Bienvenido a la plataforma de evaluación. Estimado. ",
+    "lastNotificationId": 1764337412364
 }
