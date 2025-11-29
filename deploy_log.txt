@@ -1,0 +1,40 @@
+
+> plataforma-credenciales@0.0.0 predeploy
+> npm run build
+
+
+> plataforma-credenciales@0.0.0 build
+> vite build
+
+[36mvite v5.4.21 [32mbuilding for production...[36m[39m
+transforming...
+[32mÔ£ô[39m 1975 modules transformed.
+rendering chunks...
+computing gzip size...
+[2mdist/[22m[32mindex.html                          [39m[1m[2m  2.31 kB[22m[1m[22m[2m Ôöé gzip:   1.13 kB[22m
+[2mdist/[22m[32massets/ServicesLogo-OVztm42W.svg    [39m[1m[2m 23.14 kB[22m[1m[22m[2m Ôöé gzip:   5.36 kB[22m
+[2mdist/[22m[32massets/firma-BdVaMuBN.svg           [39m[1m[2m275.06 kB[22m[1m[22m[2m Ôöé gzip: 202.19 kB[22m
+[2mdist/[22m[32massets/mascota-DYIEeseS.svg         [39m[1m[2m333.02 kB[22m[1m[22m[2m Ôöé gzip: 245.84 kB[22m
+[2mdist/[22m[35massets/index-DmU9SSWW.css           [39m[1m[2m 36.73 kB[22m[1m[22m[2m Ôöé gzip:   6.67 kB[22m
+[2mdist/[22m[36massets/purify.es-B6FQ9oRL.js        [39m[1m[2m 22.57 kB[22m[1m[22m[2m Ôöé gzip:   8.74 kB[22m
+[2mdist/[22m[36massets/index.es-AcYazO47.js         [39m[1m[2m150.64 kB[22m[1m[22m[2m Ôöé gzip:  51.48 kB[22m
+[2mdist/[22m[36massets/html2canvas.esm-BfxBtG_O.js  [39m[1m[2m201.41 kB[22m[1m[22m[2m Ôöé gzip:  48.03 kB[22m
+[2mdist/[22m[36massets/index-K_1yEBIG.js            [39m[1m[33m610.69 kB[39m[22m[2m Ôöé gzip: 196.16 kB[22m
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[32mÔ£ô built in 7.06s[39m
+
+> plataforma-credenciales@0.0.0 deploy
+> gh-pages -d dist
+
+ProcessError: fatal: couldn't find remote ref refs/heads/gh-pages
+
+    at ChildProcess.<anonymous> (C:\Users\Daniel\Downloads\credenciales-mini-2-main\credenciales-mini-2\node_modules\gh-pages\lib\git.js:42:16)
+    at ChildProcess.emit (node:events:508:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at Socket.<anonymous> (node:internal/child_process:457:11)
+    at Socket.emit (node:events:508:28)
+    at Pipe.<anonymous> (node:net:346:12)

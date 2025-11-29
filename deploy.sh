@@ -7,12 +7,15 @@ npm run build
 # Navigate to the build output directory
 cd dist
 
+# Create .nojekyll to prevent GitHub Pages from ignoring files starting with _
+touch .nojekyll
+
 # Create a new git repository
 git init
 git add -A
 git commit -m 'Deploy to GitHub Pages'
 
 # Push to gh-pages branch
-git push -f git@github.com:daniel-alt-pages/credenciales-mini-2.git main:gh-pages
+git push -f https://github.com/daniel-alt-pages/credenciales-mini-2.git gh-pages
 
 cd -

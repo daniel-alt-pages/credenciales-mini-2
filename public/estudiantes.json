@@ -468,5 +468,25 @@
         "estado": "Activo",
         "fechaPago": "25/11/2025",
         "url_carpeta": "https://drive.google.com/drive/folders/1vDe_l_SehtEw_Kr2OaZZaxzRmewX25fG"
+    },
+    {
+        "nombre": "ANGIE CAROLINA SOTO GIRALDO",
+        "tipoDoc": "T.I.",
+        "id": "1063158765",
+        "email": "caro.soto992@gmail.com",
+        "plan": "Plan Premium",
+        "estado": "Activo",
+        "fechaPago": "27/11/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/1zsTjxjds2cHpMz4hfjaIJCyip1VFoWsa"
+    },
+    {
+        "nombre": "CARLOS ANDRÉS MARTELO BOLAÑO",
+        "tipoDoc": "T.I.",
+        "id": "1201215443",
+        "email": "camabo2009@gmail.com",
+        "plan": "Plan Basico",
+        "estado": "Activo",
+        "fechaPago": "28/11/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/1Okvg-HP1ytxhpyIMGm5eHFz3OYarUN-x"
     }
 ]

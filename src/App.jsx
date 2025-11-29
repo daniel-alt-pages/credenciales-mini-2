@@ -589,85 +589,86 @@ export default function App() {
 
       {studentResult && (
         <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-4 animate-fade-in">
-          <div className="relative w-full max-w-5xl bg-slate-900/80 rounded-3xl shadow-[0_0_80px_rgba(255,255,255,0.15)] flex flex-col md:flex-row min-h-[600px] overflow-hidden border border-white/10 neon-container">
-            <button onClick={() => setStudentResult(null)} className="absolute top-4 right-4 z-20 text-slate-400 hover:text-white transition-colors bg-black/20 p-2 rounded-full"><X size={24} /></button>
-            <div className="md:w-2/5 bg-black/40 p-10 flex flex-col items-center text-center relative overflow-hidden justify-center border-r border-white/5">
-              <div className="relative mb-8 group cursor-default">
-                <div className="absolute -inset-4 bg-white/10 rounded-full opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500"></div>
-                <div className="w-48 h-48 rounded-full p-1 bg-gradient-to-b from-slate-800 to-black relative z-10 border border-white/20 shadow-[0_0_30px_rgba(255,255,255,0.1)]">
-                  <img src={SYS_CONFIG.ASSETS.defaultAvatar} className="w-full h-full object-contain rounded-full bg-white/5" />
-                </div>
-                {/* ANILLOS ROTATORIOS CSS */}
-                <div className="absolute inset-0 rounded-full border-2 border-white/30 border-t-transparent animate-spin-slow" style={{ animationDuration: '3s' }}></div>
-                <div className="absolute -inset-2 rounded-full border border-cyan-500/20 border-b-transparent animate-spin-slow" style={{ animationDuration: '7s', animationDirection: 'reverse' }}></div>
-              </div>
-              <h2 className="text-3xl font-black text-white mb-2 tracking-wide uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] break-words">{studentResult.nombre}</h2>
-              <div className="w-full border-t border-white/10 my-6"></div>
-              <div className="grid grid-cols-1 gap-4 w-full">
-                <div className="bg-white/5 px-4 py-3 rounded-xl border border-white/10 hover:border-white/30 transition-all">
-                  <p className="text-[10px] text-slate-400 uppercase font-bold tracking-widest mb-1">Credencial ID</p>
-                  <p className="text-xl font-mono text-cyan-300 tracking-wider">{studentResult.id}</p>
-                </div>
-                <div className="flex gap-4">
-                  <div className="bg-white/5 px-4 py-3 rounded-xl border border-white/10 flex-1 relative group cursor-pointer" onClick={() => setShowPlanDetails(true)}>
-                    <p className="text-[10px] text-slate-400 uppercase font-bold tracking-widest mb-1 flex items-center gap-2">Plan <LifeBuoy size={10} className="text-cyan-400 animate-pulse" /></p>
-                    <p className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors">{studentResult.plan}</p>
-                    <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity"><ExternalLink size={12} className="text-cyan-400" /></div>
+          <div className="relative w-full max-w-5xl bg-slate-900/80 rounded-3xl shadow-[0_0_80px_rgba(255,255,255,0.15)] flex flex-col max-h-[95vh] border border-white/10 neon-container overflow-hidden">
+            <button onClick={() => setStudentResult(null)} className="absolute top-4 right-4 z-50 text-slate-400 hover:text-white transition-colors bg-black/40 p-2 rounded-full backdrop-blur-sm border border-white/10 hover:bg-red-500/20"><X size={24} /></button>
+            <div className="flex flex-col md:flex-row w-full overflow-y-auto custom-scrollbar min-h-0 md:min-h-[600px]">
+              <div className="md:w-2/5 bg-black/40 p-6 md:p-10 flex flex-col items-center text-center relative overflow-hidden justify-center border-b md:border-b-0 md:border-r border-white/5 shrink-0">
+                <div className="relative mb-8 group cursor-default">
+                  <div className="absolute -inset-4 bg-white/10 rounded-full opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500"></div>
+                  <div className="w-32 h-32 md:w-48 md:h-48 rounded-full p-1 bg-gradient-to-b from-slate-800 to-black relative z-10 border border-white/20 shadow-[0_0_30px_rgba(255,255,255,0.1)]">
+                    <img src={SYS_CONFIG.ASSETS.defaultAvatar} className="w-full h-full object-contain rounded-full bg-white/5" />
                   </div>
-                  <div className="bg-white/5 px-4 py-3 rounded-xl border border-white/10 flex-1"><p className="text-[10px] text-slate-400 uppercase font-bold tracking-widest mb-1">Estado</p><p className={`text-sm font-bold ${studentResult.estado === 'Activo' ? 'text-emerald-400' : 'text-red-400'}`}>{studentResult.estado}</p></div>
+                  {/* ANILLOS ROTATORIOS CSS */}
+                  <div className="absolute inset-0 rounded-full border-2 border-white/30 border-t-transparent animate-spin-slow" style={{ animationDuration: '3s' }}></div>
+                  <div className="absolute -inset-2 rounded-full border border-cyan-500/20 border-b-transparent animate-spin-slow" style={{ animationDuration: '7s', animationDirection: 'reverse' }}></div>
+                </div>
+                <h2 className="text-3xl font-black text-white mb-2 tracking-wide uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] break-words">{studentResult.nombre}</h2>
+                <div className="w-full border-t border-white/10 my-6"></div>
+                <div className="grid grid-cols-1 gap-4 w-full">
+                  <div className="bg-white/5 px-4 py-3 rounded-xl border border-white/10 hover:border-white/30 transition-all cursor-pointer group" onClick={() => copyToClipboard(studentResult.id)} title="Copiar ID">
+                    <p className="text-[10px] text-slate-400 uppercase font-bold tracking-widest mb-1 flex justify-between">Credencial ID <Copy size={12} className="opacity-0 group-hover:opacity-100 transition-opacity text-cyan-400" /></p>
+                    <p className="text-xl font-mono text-cyan-300 tracking-wider group-hover:text-white transition-colors">{studentResult.id}</p>
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="bg-white/5 px-4 py-3 rounded-xl border border-white/10 flex-1 relative group cursor-pointer" onClick={() => setShowPlanDetails(true)}>
+                      <p className="text-[10px] text-slate-400 uppercase font-bold tracking-widest mb-1 flex items-center gap-2">Plan <LifeBuoy size={10} className="text-cyan-400 animate-pulse" /></p>
+                      <p className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors">{studentResult.plan}</p>
+                      <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity"><ExternalLink size={12} className="text-cyan-400" /></div>
+                    </div>
+                    <div className="bg-white/5 px-4 py-3 rounded-xl border border-white/10 flex-1"><p className="text-[10px] text-slate-400 uppercase font-bold tracking-widest mb-1">Estado</p><p className={`text-sm font-bold ${studentResult.estado === 'Activo' ? 'text-emerald-400' : 'text-red-400'}`}>{studentResult.estado}</p></div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="md:w-3/5 p-12 bg-transparent relative">
-              <div className="mb-10 flex justify-between items-start">
-                <div><h3 className="text-2xl font-black text-white flex items-center gap-3 tracking-wide text-shadow-white"><LayoutDashboard className="text-white" /> PANEL DE CONTROL</h3><p className="text-slate-400 text-sm mt-2">Acceso a recursos asignados.</p></div>
-                <button onClick={requestNotificationPermission} className={`p-3 rounded-full border transition-all ${notificationsEnabled ? 'bg-white/10 border-white/30 text-white shadow-[0_0_10px_rgba(255,255,255,0.2)]' : 'bg-transparent border-slate-700 text-slate-500 hover:text-white'}`} title={notificationsEnabled ? "Notificaciones Activas" : "Activar Alertas"}>{notificationsEnabled ? <BellRing size={20} /> : <Bell size={20} />}</button>
-              </div>
-              {academicConfig.systemMessage && (<div className="mb-8 p-4 bg-gradient-to-r from-purple-900/40 to-blue-900/40 border-l-4 border-white rounded-r-lg flex items-start gap-4 shadow-[0_0_20px_rgba(147,51,234,0.2)]"><Megaphone className="text-white shrink-0 mt-1" /><div><h4 className="text-white text-xs font-bold uppercase tracking-wider mb-1">Anuncio del Sistema</h4><p className="text-slate-200 text-sm leading-relaxed">{academicConfig.systemMessage}</p></div></div>)}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {/* 1. REPOSITORIO DIGITAL (Large Card) */}
-                <a href={studentResult.url_carpeta} target="_blank" className="col-span-2 md:col-span-2 flex items-center gap-6 p-6 bg-black/30 rounded-2xl border border-white/10 hover:border-cyan-400/50 hover:bg-cyan-900/20 shadow-lg hover:shadow-[0_0_20px_rgba(34,211,238,0.2)] transition-all group relative overflow-hidden h-32">
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  <div className="p-4 bg-slate-800 rounded-2xl text-cyan-400 group-hover:scale-110 transition-transform shadow-inner relative z-10"><FolderOpen size={28} /></div>
-                  <div className="relative z-10"><h4 className="font-bold text-white text-lg group-hover:text-cyan-300 transition-colors break-words">Repositorio</h4><p className="text-xs text-slate-400 mt-1 break-words">Material de estudio</p></div>
-                  <ExternalLink size={20} className="ml-auto text-slate-600 group-hover:text-cyan-400 relative z-10" />
-                </a>
+              <div className="md:w-3/5 p-6 md:p-12 bg-transparent relative shrink-0">
+                <div className="mb-10 flex justify-between items-start">
+                  <div><h3 className="text-2xl font-black text-white flex items-center gap-3 tracking-wide text-shadow-white"><LayoutDashboard className="text-white" /> PANEL DE CONTROL</h3><p className="text-slate-400 text-sm mt-2">Acceso a recursos asignados.</p></div>
+                  <button onClick={requestNotificationPermission} className={`p-3 rounded-full border transition-all ${notificationsEnabled ? 'bg-white/10 border-white/30 text-white shadow-[0_0_10px_rgba(255,255,255,0.2)]' : 'bg-transparent border-slate-700 text-slate-500 hover:text-white'}`} title={notificationsEnabled ? "Notificaciones Activas" : "Activar Alertas"}>{notificationsEnabled ? <BellRing size={20} /> : <Bell size={20} />}</button>
+                </div>
+                {academicConfig.systemMessage && (<div className="mb-8 p-4 bg-gradient-to-r from-purple-900/40 to-blue-900/40 border-l-4 border-white rounded-r-lg flex items-start gap-4 shadow-[0_0_20px_rgba(147,51,234,0.2)]"><Megaphone className="text-white shrink-0 mt-1" /><div><h4 className="text-white text-xs font-bold uppercase tracking-wider mb-1">Anuncio del Sistema</h4><p className="text-slate-200 text-sm leading-relaxed">{academicConfig.systemMessage}</p></div></div>)}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  {/* 1. REPOSITORIO DIGITAL (Large Card) */}
+                  <a href={studentResult.url_carpeta} target="_blank" className="col-span-2 md:col-span-2 flex items-center gap-6 p-6 bg-black/30 rounded-2xl border border-white/10 hover:border-cyan-400/50 hover:bg-cyan-900/20 shadow-lg hover:shadow-[0_0_20px_rgba(34,211,238,0.2)] transition-all group relative overflow-hidden h-32">
+                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div className="p-4 bg-slate-800 rounded-2xl text-cyan-400 group-hover:scale-110 transition-transform shadow-inner relative z-10"><FolderOpen size={28} /></div>
+                    <div className="relative z-10"><h4 className="font-bold text-white text-lg group-hover:text-cyan-300 transition-colors break-words">Repositorio</h4><p className="text-xs text-slate-400 mt-1 break-words">Material de estudio</p></div>
+                    <ExternalLink size={20} className="ml-auto text-slate-600 group-hover:text-cyan-400 relative z-10" />
+                  </a>
 
-                {/* 2. EVALUACIONES (Large Card) */}
-                <button onClick={() => setShowSubjectModal(true)} className="col-span-2 md:col-span-2 flex items-center gap-6 p-6 bg-black/30 rounded-2xl border border-white/10 hover:border-purple-400/50 hover:bg-purple-900/20 shadow-lg hover:shadow-[0_0_20px_rgba(192,132,252,0.2)] transition-all group text-left w-full relative overflow-hidden h-32">
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  <div className="p-4 bg-slate-800 rounded-2xl text-purple-400 group-hover:scale-110 transition-transform shadow-inner relative z-10"><FileSignature size={28} /></div>
-                  <div className="relative z-10"><h4 className="font-bold text-white text-lg group-hover:text-purple-300 transition-colors break-words">Evaluaciones</h4><p className="text-xs text-slate-400 mt-1 break-words">Simulacros online</p></div>
-                  <ChevronRight size={20} className="ml-auto text-slate-600 group-hover:text-purple-400 relative z-10" />
-                </button>
-
-                {/* 3. NEW FEATURES GRID (Small Cards) */}
-                {FEATURES_UI.map((feat) => (
-                  <button
-                    key={feat.key}
-                    onClick={() => {
-                      if (feat.key === 'certificados') setShowCertificate(true);
-                      else setActiveFeature(feat);
-                    }}
-                    className={`col-span-1 flex flex-col items-center justify-center p-4 rounded-2xl border border-white/5 bg-black/20 hover:bg-white/5 hover:border-white/20 transition-all group relative overflow-hidden h-32`}
-                  >
-                    <div className={`mb-3 p-3 rounded-xl ${feat.bg} ${feat.color} group-hover:scale-110 transition-transform`}>{feat.icon}</div>
-                    <h4 className="text-sm font-bold text-white mb-1">{feat.name}</h4>
+                  {/* 2. EVALUACIONES (Large Card) */}
+                  <button onClick={() => setShowSubjectModal(true)} className="col-span-2 md:col-span-2 flex items-center gap-6 p-6 bg-black/30 rounded-2xl border border-white/10 hover:border-purple-400/50 hover:bg-purple-900/20 shadow-lg hover:shadow-[0_0_20px_rgba(192,132,252,0.2)] transition-all group text-left w-full relative overflow-hidden h-32">
+                    <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div className="p-4 bg-slate-800 rounded-2xl text-purple-400 group-hover:scale-110 transition-transform shadow-inner relative z-10"><FileSignature size={28} /></div>
+                    <div className="relative z-10"><h4 className="font-bold text-white text-lg group-hover:text-purple-300 transition-colors break-words">Evaluaciones</h4><p className="text-xs text-slate-400 mt-1 break-words">Simulacros online</p></div>
+                    <ChevronRight size={20} className="ml-auto text-slate-600 group-hover:text-purple-400 relative z-10" />
                   </button>
-                ))}
 
-                {/* Empty slot filler if needed or support button */}
-                <button onClick={() => setActiveFeature({ name: 'Soporte', icon: <LifeBuoy />, bg: 'bg-slate-800', color: 'text-slate-300' })} className="col-span-1 flex flex-col items-center justify-center p-4 rounded-2xl border border-white/5 bg-black/20 hover:bg-white/5 hover:border-white/20 transition-all group relative overflow-hidden h-32">
-                  <div className="mb-3 p-3 rounded-xl bg-slate-800 text-slate-400 group-hover:scale-110 transition-transform"><LifeBuoy size={24} /></div>
-                  <h4 className="text-sm font-bold text-slate-400 mb-1">Ayuda</h4>
-                </button>
+                  {/* 3. NEW FEATURES GRID (Small Cards) */}
+                  {FEATURES_UI.map((feat) => (
+                    <button
+                      key={feat.key}
+                      onClick={() => {
+                        if (feat.key === 'certificados') setShowCertificate(true);
+                        else setActiveFeature(feat);
+                      }}
+                      className={`col-span-1 flex flex-col items-center justify-center p-4 rounded-2xl border border-white/5 bg-black/20 hover:bg-white/5 hover:border-white/20 transition-all group relative overflow-hidden h-32`}
+                    >
+                      <div className={`mb-3 p-3 rounded-xl ${feat.bg} ${feat.color} group-hover:scale-110 transition-transform`}>{feat.icon}</div>
+                      <h4 className="text-sm font-bold text-white mb-1">{feat.name}</h4>
+                    </button>
+                  ))}
+
+                  {/* Empty slot filler if needed or support button */}
+                  <button onClick={() => setActiveFeature({ name: 'Soporte', icon: <LifeBuoy />, bg: 'bg-slate-800', color: 'text-slate-300' })} className="col-span-1 flex flex-col items-center justify-center p-4 rounded-2xl border border-white/5 bg-black/20 hover:bg-white/5 hover:border-white/20 transition-all group relative overflow-hidden h-32">
+                    <div className="mb-3 p-3 rounded-xl bg-slate-800 text-slate-400 group-hover:scale-110 transition-transform"><LifeBuoy size={24} /></div>
+                    <h4 className="text-sm font-bold text-slate-400 mb-1">Ayuda</h4>
+                  </button>
+                </div>
+                <div className="absolute bottom-8 right-12 text-[10px] text-slate-600 font-mono uppercase tracking-widest">Secure Connection • {formatDate()}</div>
               </div>
-              <div className="absolute bottom-8 right-12 text-[10px] text-slate-600 font-mono uppercase tracking-widest">Secure Connection • {formatDate()}</div>
             </div>
           </div>
         </div>
       )}
-
       {showSubjectModal && (
         <div className="fixed inset-0 z-[60] bg-black/90 backdrop-blur-xl flex items-center justify-center p-4 animate-fade-in">
           <div className="bg-slate-900 rounded-3xl border border-white/20 w-full max-w-lg overflow-hidden shadow-[0_0_50px_rgba(255,255,255,0.1)] relative neon-container">
@@ -700,7 +701,8 @@ export default function App() {
             </div>
           </div>
         </div>
-      )}
+      )
+      }
 
       {/* MODAL GENÉRICO PARA NUEVAS SECCIONES */}
       <Modal
@@ -758,12 +760,14 @@ export default function App() {
       </Modal>
 
       {/* CERTIFICADO */}
-      {showCertificate && studentResult && (
-        <Certificate
-          student={studentResult}
-          onClose={() => setShowCertificate(false)}
-        />
-      )}
+      {
+        showCertificate && studentResult && (
+          <Certificate
+            student={studentResult}
+            onClose={() => setShowCertificate(false)}
+          />
+        )
+      }
 
       <style>{`
         @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
@@ -793,6 +797,6 @@ export default function App() {
         }
         .font-sans { font-family: 'Outfit', sans-serif; }
       `}</style>
-    </div>
+    </div >
   );
 }

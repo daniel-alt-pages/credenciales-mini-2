@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Download, X, Loader2 } from 'lucide-react';
+import { Download, X, Loader2, Award, CheckCircle2 } from 'lucide-react';
 import * as htmlToImage from 'html-to-image';
 import jsPDF from 'jspdf';
 import cubesImg from '../assets/images/cubes.png';
@@ -123,7 +123,7 @@ const Certificate = ({ student, onClose }) => {
                     className="bg-white relative flex flex-row overflow-hidden shrink-0 rounded-sm"
                 >
                     {/* LEFT SIDEBAR - MASCOT */}
-                    <div className="w-[25%] bg-[#0070f3] relative flex items-center justify-center overflow-hidden h-full">
+                    <div className="w-[30%] bg-[#0070f3] relative flex items-end justify-center overflow-hidden h-full pb-8">
                         <div
                             className="absolute inset-0 opacity-10 bg-repeat"
                             style={{ backgroundImage: `url(${cubesImg})` }}
@@ -141,12 +141,13 @@ const Certificate = ({ student, onClose }) => {
                         <img
                             src={mascotaImg}
                             alt="Mascota"
-                            className="relative z-10 h-[94.5%] w-[94%] object-contain drop-shadow-2xl"
+                            className="relative z-10 h-full w-full object-contain object-bottom drop-shadow-2xl scale-125 transform -translate-y-24"
                         />
                     </div>
 
                     {/* RIGHT CONTENT */}
-                    <div className="w-[75%] p-12 flex flex-col items-center text-center bg-white relative h-full justify-between">
+                    <div className="w-[70%] p-12 flex flex-col items-center text-center relative h-full justify-between bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white to-slate-50">
+
                         {/* Watermark Logo (Background) */}
                         <div className="absolute inset-0 flex items-center justify-center opacity-[0.02] pointer-events-none">
                             <img src={servicesLogoImg} className="w-[80%] grayscale" alt="" />
@@ -154,21 +155,25 @@ const Certificate = ({ student, onClose }) => {
 
                         <div className="relative z-10 w-full flex flex-col h-full items-center">
                             {/* Top Header */}
-                            <div className="mt-8 mb-2">
-                                <h3 className="text-sm font-bold text-slate-900 tracking-[0.5em] uppercase mb-4">SEAMOSGENIOS</h3>
-                                <h1 className="text-6xl font-black text-[#002060] leading-none uppercase tracking-wide mb-2">
+                            <div className="mt-8 mb-4">
+                                <h3 className="text-[10px] font-bold text-slate-500 tracking-[0.6em] uppercase mb-2">SEAMOSGENIOS COLOMBIA</h3>
+                                <h1 className="text-5xl font-black text-[#002060] leading-none uppercase tracking-[0.15em] mb-2 drop-shadow-sm" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                                     CERTIFICADO
                                 </h1>
-                                <h2 className="text-3xl font-bold text-[#0070f3] uppercase tracking-wider">
-                                    DE PARTICIPACIÓN
-                                </h2>
+                                <div className="flex items-center justify-center gap-4 mb-2">
+                                    <div className="h-px w-8 bg-[#0070f3]"></div>
+                                    <h2 className="text-xl font-bold text-[#0070f3] uppercase tracking-widest">
+                                        DE PARTICIPACIÓN
+                                    </h2>
+                                    <div className="h-px w-8 bg-[#0070f3]"></div>
+                                </div>
                             </div>
 
                             {/* Main Body */}
                             <div className="flex-grow flex flex-col justify-center w-full max-w-3xl items-center">
                                 <p className="text-slate-500 font-serif italic text-xl mb-6">Este documento certifica que</p>
 
-                                <h2 className="text-5xl font-black text-[#002060] uppercase mb-6 break-words leading-tight">
+                                <h2 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#002060] to-[#004080] uppercase mb-6 break-words leading-tight drop-shadow-sm" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                                     {student.nombre}
                                 </h2>
 
@@ -176,25 +181,36 @@ const Certificate = ({ student, onClose }) => {
                                 <div className="w-[40%] h-1 bg-[#0070f3] mb-8"></div>
 
                                 <p className="text-slate-600 text-lg leading-relaxed font-medium px-8">
-                                    Ha participado satisfactoriamente en el <strong className="text-[#0070f3]">MINI SIMULACRO ICFES 2026-1</strong>,
+                                    Ha participado satisfactoriamente en el <strong className="text-[#0070f3]">MINISIMULACRO ICFES 2026-1</strong>,
                                     demostrando compromiso y excelencia académica.
                                 </p>
 
-                                {/* Score Box */}
-                                <div className="mt-10 mx-auto p-4 bg-slate-50 rounded-2xl border border-slate-100 w-full max-w-md flex items-center justify-center gap-6">
-                                    {/* Logo in Score Box - INVERTED TO BLACK */}
-                                    <div className="flex flex-col items-center justify-center">
-                                        <img src={servicesLogoImg} className="h-12 w-auto brightness-0" alt="Logo" />
+                                {/* Score Section - Minimalist */}
+                                <div className="mt-8 flex items-center justify-center gap-6 py-4 border-y border-slate-200 w-full max-w-lg relative">
+                                    {/* Background Pattern for Score */}
+                                    <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/diagmonds-light.png')]"></div>
+
+                                    {/* Logo */}
+                                    <img src={servicesLogoImg} className="h-10 w-auto opacity-90 brightness-0 drop-shadow-md" alt="Logo" />
+
+                                    <div className="w-px h-8 bg-slate-300"></div>
+
+                                    {/* Official Badge (Moved here) */}
+                                    <div className="flex flex-col items-center opacity-80">
+                                        <div className="w-8 h-8 rounded-full border border-[#002060] flex items-center justify-center mb-0.5">
+                                            <Award className="text-[#002060]" size={16} />
+                                        </div>
+                                        <span className="text-[6px] font-bold tracking-widest text-[#002060] uppercase">Oficial</span>
                                     </div>
 
-                                    {/* Divider */}
-                                    <div className="w-px h-12 bg-slate-300"></div>
+                                    <div className="w-px h-8 bg-slate-300"></div>
 
-                                    {/* Score Text */}
-                                    <div className="text-left">
-                                        <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-1">PUNTAJE GLOBAL</p>
-                                        <div className="text-3xl font-mono font-bold text-slate-400 flex items-center gap-2">
-                                            <span>---</span> <span className="text-lg text-slate-400">/ 500</span>
+                                    {/* Score */}
+                                    <div className="flex flex-col items-start z-10">
+                                        <span className="text-[8px] uppercase tracking-[0.25em] text-slate-400 font-bold mb-0.5">Puntaje Global</span>
+                                        <div className="flex items-baseline gap-2">
+                                            <span className="text-3xl font-mono font-black text-slate-700">---</span>
+                                            <span className="text-xs text-slate-400 font-medium">/ 500</span>
                                         </div>
                                     </div>
                                 </div>
@@ -211,7 +227,7 @@ const Certificate = ({ student, onClose }) => {
                                     <img
                                         src={firmaImg}
                                         alt="Firma"
-                                        className="h-20 w-auto mb-[-10px] z-10 filter contrast-125"
+                                        className="h-[70px] w-auto mb-[-10px] z-10 filter contrast-125"
                                     />
                                     <div className="w-48 h-0.5 bg-slate-900 mb-2 relative z-0"></div>
                                     <p className="text-xs font-black text-slate-900 uppercase tracking-wider">DANIEL DE LA CRUZ</p>
@@ -220,6 +236,8 @@ const Certificate = ({ student, onClose }) => {
                             </div>
                         </div>
                     </div>
+                    {/* Blue Bottom Line */}
+                    <div className="absolute bottom-0 left-0 w-full h-[15px] bg-[#0070f3] z-30"></div>
                 </div>
             </div>
 
@@ -229,7 +247,7 @@ const Certificate = ({ student, onClose }) => {
                     body { background: white; }
                 }
             `}</style>
-        </div>
+        </div >
     );
 };
 
