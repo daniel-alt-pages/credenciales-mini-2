@@ -488,5 +488,42 @@
         "estado": "Activo",
         "fechaPago": "28/11/2025",
         "url_carpeta": "https://drive.google.com/drive/folders/1Okvg-HP1ytxhpyIMGm5eHFz3OYarUN-x"
+    },
+    {
+        "email": "mvdaniv@gmail.com",
+        "plan": "Plan Premium",
+        "estado": "Activo",
+        "fechaPago": "29/11/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/1iX3VMX38w5hIU-HhMeiJ9ZfMTJ-pD_Wm"
+    },
+    {
+        "nombre": "MARÍA PAULA TAPIA YEPES",
+        "tipoDoc": "T.I.",
+        "id": "1062439947",
+        "email": "maripautaye@gmail.com",
+        "plan": "Plan Premium",
+        "estado": "Activo",
+        "fechaPago": "30/11/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/1wsZkq0Gs9Dgm07PPwT9IcADhHEOaU1Rt"
+    },
+    {
+        "nombre": "SANDRA YULIETH PEDRAZA GARCIA",
+        "tipoDoc": "T.I.",
+        "id": "1029883931",
+        "email": "sandrayuliethpedrazagarcia@gmail.com",
+        "plan": "Plan Premium",
+        "estado": "Activo",
+        "fechaPago": "30/11/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/16uT38JQEMniOwN8e6xJwAi90s3SLD3gb"
+    },
+    {
+        "nombre": "LUIS FERNANDO LÓPEZ LOPEZ",
+        "tipoDoc": "CC",
+        "id": "1112465416",
+        "email": "lopezlopezfercho739403@gmail.com",
+        "plan": "Plan Premium",
+        "estado": "Activo",
+        "fechaPago": "30/11/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/1udizrXZV1yPu_BpdwtCTEqgOyIxFefSF"
     }
 ]
