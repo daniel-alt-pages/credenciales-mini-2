@@ -1,4 +1,4 @@
-[
+﻿[
     {
         "nombre": "RAIZA DRILLETH PUPO OSORIO",
         "tipoDoc": "T.I.",
@@ -490,6 +490,9 @@
         "url_carpeta": "https://drive.google.com/drive/folders/1Okvg-HP1ytxhpyIMGm5eHFz3OYarUN-x"
     },
     {
+        "nombre": "MARÍA DANIELA VERA VILLAMIZAR",
+        "tipoDoc": "T.I.",
+        "id": "1096069283",
         "email": "mvdaniv@gmail.com",
         "plan": "Plan Premium",
         "estado": "Activo",
