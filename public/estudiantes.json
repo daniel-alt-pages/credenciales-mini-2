@@ -638,5 +638,15 @@
         "estado": "Activo",
         "fechaPago": "3/12/2025",
         "url_carpeta": "https://drive.google.com/drive/folders/1FkDjRJv_H9tLmtUWWQfmF_kNXNtM_ZZU"
+    },
+    {
+        "nombre": "JULIANA JULIO JARABA",
+        "tipoDoc": "T.I.",
+        "id": "1100546938",
+        "email": "julianajuliojaraba@gmail.com",
+        "plan": "Plan Basico",
+        "estado": "Activo",
+        "fechaPago": "29/11/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/19uKuCtBHVGk_EWokcXOQe_t54L1tI3Lz"
     }
 ]
