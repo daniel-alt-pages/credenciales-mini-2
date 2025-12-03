@@ -1,4 +1,4 @@
-﻿[
+[
     {
         "nombre": "RAIZA DRILLETH PUPO OSORIO",
         "tipoDoc": "T.I.",
@@ -528,5 +528,115 @@
         "estado": "Activo",
         "fechaPago": "30/11/2025",
         "url_carpeta": "https://drive.google.com/drive/folders/1udizrXZV1yPu_BpdwtCTEqgOyIxFefSF"
+    },
+    {
+        "nombre": "JUAN DIEGO ZAMBRANO OCAMPO",
+        "tipoDoc": "T.I.",
+        "id": "1077726158",
+        "email": "juanzccpa@gmail.com",
+        "plan": "Plan Basico",
+        "estado": "Activo",
+        "fechaPago": "1/12/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/12fl8FdzVS8KTFWkkziBBCI92bIvUs_eD"
+    },
+    {
+        "nombre": "JHON ALEXANDER ARANDA SANTACRUZ",
+        "tipoDoc": "CC",
+        "id": "1058548381",
+        "email": "arandasantacruzjhonalexander@gmail.com",
+        "plan": "Plan Basico",
+        "estado": "Activo",
+        "fechaPago": "1/12/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/1tffzEeX0D_vHHHlpe_3uv7BdFb08oEQC"
+    },
+    {
+        "nombre": "HELLEN SOFIA ARANDA TOVAR",
+        "tipoDoc": "T.I.",
+        "id": "1072101688",
+        "email": "hellensofia.seamosgenios@gmail.com",
+        "plan": "Plan Premium",
+        "estado": "Activo",
+        "fechaPago": "1/12/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/1nFGvuGV2bS3_unCCNfyxvrDEAkpAopjd"
+    },
+    {
+        "nombre": "ROSA MENDIETA",
+        "tipoDoc": "T.I.",
+        "id": "1097912847",
+        "email": "rmendietafonseca@gmail.com",
+        "plan": "Plan Premium",
+        "estado": "Activo",
+        "fechaPago": "3/12/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/1wpEEqeCDEqdfvfAKi2cMYvdcTIgf6yWK"
+    },
+    {
+        "nombre": "SARA PALACIO CARMONA",
+        "tipoDoc": "T.I.",
+        "id": "1025655952",
+        "email": "maysarita.carmona@gmail.com",
+        "plan": "Plan Premium",
+        "estado": "Activo",
+        "fechaPago": "1/12/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/18L8Ec9m0UTaDVEevXfEqcEZ2buJ8MoPD"
+    },
+    {
+        "nombre": "LUIS DAVID GUTIERREZ PORTILLO",
+        "tipoDoc": "T.I.",
+        "id": "1080694028",
+        "email": "luisdavidgutierres3110@gmail.com",
+        "plan": "Plan Premium",
+        "estado": "Activo",
+        "fechaPago": "5/11/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/1jyx0w3JuHXZvu57mkHKzO67m1eCTFcr9"
+    },
+    {
+        "nombre": "JOSE MANUEL LONDOÑO",
+        "tipoDoc": "CC",
+        "id": "1114819691",
+        "email": "joselondono.edu.seamosgenios@gmail.com",
+        "plan": "Plan Premium",
+        "estado": "Activo",
+        "fechaPago": "1/12/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/1hc_6ZWeUvwmWaJqOxAR7Myjv1CaJ2PMK"
+    },
+    {
+        "nombre": "DANIEL CAMILO PIMIENTO CUSPOCA",
+        "tipoDoc": "T.I.",
+        "id": "1095306528",
+        "email": "danielcuspoca.edu.seamosgenios@gmail.com",
+        "plan": "Plan Premium",
+        "estado": "Activo",
+        "fechaPago": "1/12/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/1g5VlDsoqgYM0lhd7vPczCz24U1cQ8PLN"
+    },
+    {
+        "nombre": "VALENTINA OCAMPO SERPA",
+        "tipoDoc": "T.I.",
+        "id": "1043979205",
+        "email": "valentinaocampo884@gmail.com",
+        "plan": "Plan Intermedio",
+        "estado": "Activo",
+        "fechaPago": "2/12/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/12LxvfO7nyVKaVfadja490s54LAL-_FYk"
+    },
+    {
+        "nombre": "MARIANA QUESADA VARGAS",
+        "tipoDoc": "T.I.",
+        "id": "1075798438",
+        "email": "marianavargas101112@gmail.com",
+        "plan": "Plan Premium",
+        "estado": "Activo",
+        "fechaPago": "2/12/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/1Xe8E23_CHLTCRHogTjqLa786TpvBMpFz"
+    },
+    {
+        "nombre": "LUIS RODRIGUEZ",
+        "tipoDoc": "CC",
+        "id": "1099965070",
+        "email": "lars201802@gmail.com",
+        "plan": "Plan Premium",
+        "estado": "Activo",
+        "fechaPago": "3/12/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/1FkDjRJv_H9tLmtUWWQfmF_kNXNtM_ZZU"
     }
 ]
