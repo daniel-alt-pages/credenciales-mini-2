@@ -648,5 +648,55 @@
         "estado": "Activo",
         "fechaPago": "29/11/2025",
         "url_carpeta": "https://drive.google.com/drive/folders/19uKuCtBHVGk_EWokcXOQe_t54L1tI3Lz"
+    },
+    {
+        "nombre": "SEBASTIAN MARTÍNEZ",
+        "tipoDoc": "T.I.",
+        "id": "11085662324",
+        "email": "sebasmillonarian@gmail.com",
+        "plan": "Plan Premium",
+        "estado": "Activo",
+        "fechaPago": "24/12/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/1Zo0tGLcwBDrCVW1hD6M1Cqw99yIqis4a"
+    },
+    {
+        "nombre": "DEIBI ALEJANDRO ESPINOSA",
+        "tipoDoc": "T.I.",
+        "id": "1075253343",
+        "email": "azteroizgaming@gmail.com",
+        "plan": "Plan Basico",
+        "estado": "Activo",
+        "fechaPago": "9/5/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/1_7vYDQgNgLCNsREm7q8P5-guhB84ev-3"
+    },
+    {
+        "nombre": "JUAN SEBASTIÁN LANCHEROS DOMÍNGUEZ",
+        "tipoDoc": "T.I.",
+        "id": "1072494382",
+        "email": "lancheros.d.juan@gmail.com",
+        "plan": "Plan Basico",
+        "estado": "Activo",
+        "fechaPago": "5/12/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/1RUqwb_a8b1KOl6ufvgmZD7-n0Y-2kNNc"
+    },
+    {
+        "nombre": "DANIELA SOFÍA FLOREZ VARGAS",
+        "tipoDoc": "T.I.",
+        "id": "1023381412",
+        "email": "danisofifv28@gmail.com",
+        "plan": "Plan Premium",
+        "estado": "Activo",
+        "fechaPago": "5/12/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/1MzzfKMog_Enws0M7eiB8IVkNnJ5lsbzo"
+    },
+    {
+        "nombre": "HANNA NICOLLE TREJOS APACHE",
+        "tipoDoc": "T.I.",
+        "id": "1106228690",
+        "email": "grado5bnicolletrejos@gmail.com",
+        "plan": "Plan Basico",
+        "estado": "Activo",
+        "fechaPago": "5/12/2025",
+        "url_carpeta": "https://drive.google.com/drive/folders/16KvPSHj48sBfzeVlVFe-PXX7fPVRxL8D"
     }
 ]
